@@ -86,19 +86,19 @@ public class SortDialog extends JDialog {
 				okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(xCoord.getText().trim().isEmpty() ||
-								yCoord.getText().trim().isEmpty() ||
-								rValue.getText().trim().isEmpty()) {
-								isOk = false;
-								getToolkit().beep();
-								JOptionPane.showMessageDialog(null, "You need to fill in all blank spaces", "Error",JOptionPane.ERROR_MESSAGE);
-							} else {
-								isOk = true;
-								setDelete(true);
-								dispose();
-							}
+						if (xCoord.getText().trim().isEmpty() || yCoord.getText().trim().isEmpty()
+								|| rValue.getText().trim().isEmpty()) {
+							isOk = false;
+							getToolkit().beep();
+							JOptionPane.showMessageDialog(null, "You need to fill in all blank spaces", "Error",
+									JOptionPane.ERROR_MESSAGE);
+						} else {
+							isOk = true;
+							setDelete(true);
+							dispose();
 						}
-					});
+					}
+				});
 				okButton.setActionCommand("OK");
 				getRootPane().setDefaultButton(okButton);
 			}
@@ -114,43 +114,29 @@ public class SortDialog extends JDialog {
 			}
 		}
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(pnlCenter, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
-				.addComponent(pnlBtn, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(pnlBtn, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(pnlCenter, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-					.addComponent(pnlBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-		);
+						.addComponent(pnlCenter, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pnlBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)));
 		GroupLayout gl_pnlBtn = new GroupLayout(pnlBtn);
-		gl_pnlBtn.setHorizontalGroup(
-			gl_pnlBtn.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlBtn.createSequentialGroup()
-					.addGap(312)
-					.addComponent(okButton)
-					.addGap(5)
-					.addComponent(cancelButton))
-		);
-		gl_pnlBtn.setVerticalGroup(
-			gl_pnlBtn.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlBtn.createSequentialGroup()
-					.addGap(5)
-					.addGroup(gl_pnlBtn.createParallelGroup(Alignment.LEADING)
-						.addComponent(okButton)
-						.addComponent(cancelButton)))
-		);
+		gl_pnlBtn.setHorizontalGroup(gl_pnlBtn.createParallelGroup(Alignment.LEADING).addGroup(gl_pnlBtn
+				.createSequentialGroup().addGap(312).addComponent(okButton).addGap(5).addComponent(cancelButton)));
+		gl_pnlBtn.setVerticalGroup(gl_pnlBtn.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlBtn.createSequentialGroup().addGap(5).addGroup(gl_pnlBtn
+						.createParallelGroup(Alignment.LEADING).addComponent(okButton).addComponent(cancelButton))));
 		pnlBtn.setLayout(gl_pnlBtn);
 		xCoord = new JTextField();
 		xCoord.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
@@ -160,9 +146,9 @@ public class SortDialog extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
@@ -172,52 +158,46 @@ public class SortDialog extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
 		rValue.setColumns(10);
-		
+
 		JLabel lblNewLabel = new JLabel("X coordinate:");
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Y coordinate:");
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Radius:");
 		GroupLayout gl_pnlCenter = new GroupLayout(pnlCenter);
-		gl_pnlCenter.setHorizontalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addGap(61)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1)
-						.addComponent(lblNewLabel_2))
-					.addGap(41)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(xCoord, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-						.addComponent(yCoord)
-						.addComponent(rValue))
-					.addContainerGap(82, Short.MAX_VALUE))
-		);
-		gl_pnlCenter.setVerticalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addGap(41)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(xCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(yCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(rValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
-					.addContainerGap(81, Short.MAX_VALUE))
-		);
+		gl_pnlCenter.setHorizontalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCenter.createSequentialGroup().addGap(61)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel)
+								.addComponent(lblNewLabel_1).addComponent(lblNewLabel_2))
+						.addGap(41)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(xCoord, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+								.addComponent(yCoord).addComponent(rValue))
+						.addContainerGap(82, Short.MAX_VALUE)));
+		gl_pnlCenter.setVerticalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCenter.createSequentialGroup().addGap(41)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(xCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel))
+						.addGap(18)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(yCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1))
+						.addGap(18)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(rValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_2))
+						.addContainerGap(81, Short.MAX_VALUE)));
 		pnlCenter.setLayout(gl_pnlCenter);
 		getContentPane().setLayout(groupLayout);
 	}

@@ -107,99 +107,97 @@ public class DlgLine extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
+				}
 			}
-		}});
+		});
 		sxValue.setColumns(10);
 		syValue = new JTextField();
 		syValue.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
+				}
 			}
-		}});
+		});
 		syValue.setColumns(10);
 		exValue = new JTextField();
 		exValue.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
+				}
 			}
-		}});
+		});
 		exValue.setColumns(10);
 		eyValue = new JTextField();
 		eyValue.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
+				}
 			}
-		}});
+		});
 		eyValue.setColumns(10);
 		JLabel lblNewLabel = new JLabel("X start coordinate:");
 		JLabel lblNewLabel_1 = new JLabel("Y start coordinate:");
 		JLabel lblNewLabel_2 = new JLabel("X end coordinate:");
 		JLabel lblNewLabel_3 = new JLabel("Y end coordinate:");
-		
+
 		JButton btnNewButton = new JButton("Outline color");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				outline = JColorChooser.showDialog(null, "Choose color", Color.BLACK);
-					OutLineBoolean = true;
+				OutLineBoolean = true;
 			}
 		});
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
-		gl_contentPanel.setHorizontalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(59)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1)
-						.addComponent(lblNewLabel_2)
-						.addComponent(lblNewLabel_3))
-					.addGap(60)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(sxValue, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-						.addComponent(syValue, Alignment.LEADING)
-						.addComponent(exValue, Alignment.LEADING)
-						.addComponent(eyValue, Alignment.LEADING))
-					.addContainerGap(76, Short.MAX_VALUE))
-		);
-		gl_contentPanel.setVerticalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(22)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(sxValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(syValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addGap(18)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(exValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
-					.addGap(18)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(eyValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3))
-					.addGap(18)
-					.addComponent(btnNewButton)
-					.addContainerGap(21, Short.MAX_VALUE))
-		);
+		gl_contentPanel.setHorizontalGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup().addGap(59)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel)
+								.addComponent(lblNewLabel_1).addComponent(lblNewLabel_2).addComponent(lblNewLabel_3))
+						.addGap(60)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(sxValue, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 183,
+										Short.MAX_VALUE)
+								.addComponent(syValue, Alignment.LEADING).addComponent(exValue, Alignment.LEADING)
+								.addComponent(eyValue, Alignment.LEADING))
+						.addContainerGap(76, Short.MAX_VALUE)));
+		gl_contentPanel.setVerticalGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup().addGap(22)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(sxValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel))
+						.addGap(18)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(syValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1))
+						.addGap(18)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(exValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_2))
+						.addGap(18)
+						.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(eyValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_3))
+						.addGap(18).addComponent(btnNewButton).addContainerGap(21, Short.MAX_VALUE)));
 		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
@@ -209,21 +207,19 @@ public class DlgLine extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(getSxValue().getText().trim().isEmpty() ||
-							getSyValue().getText().trim().isEmpty() ||
-							getExValue().getText().trim().isEmpty() ||
-							getEyValue().getText().trim().isEmpty()) {
-							JOptionPane.showMessageDialog(null, "Enter in all values!" , 
-							"Error" , JOptionPane.INFORMATION_MESSAGE);
+						if (getSxValue().getText().trim().isEmpty() || getSyValue().getText().trim().isEmpty()
+								|| getExValue().getText().trim().isEmpty() || getEyValue().getText().trim().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Enter in all values!", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						} else {
 							for (Shape shape : PnlDrawing.shapesArrList) {
 								if (shape.isSelected()) {
-									((Line)shape).setStartPoint(new Point(Integer.parseInt(sxValue.getText()),
+									((Line) shape).setStartPoint(new Point(Integer.parseInt(sxValue.getText()),
 											Integer.parseInt(syValue.getText())));
-									((Line)shape).setEndPoint(new Point(Integer.parseInt(exValue.getText()),
+									((Line) shape).setEndPoint(new Point(Integer.parseInt(exValue.getText()),
 											Integer.parseInt(eyValue.getText())));
-									if(OutLineBoolean == true) {
+									if (OutLineBoolean == true) {
 										shape.setOutline(outline);
 										OutLineBoolean = false;
 									}

@@ -24,7 +24,7 @@ public class DrawingFrm1 extends JFrame {
 	private PnlDrawing pnlDrawing = new PnlDrawing();
 	static Color outline = Color.BLACK;
 	static Color area = Color.WHITE;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -55,11 +55,11 @@ public class DrawingFrm1 extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		pnlDrawing.setBackground(Color.WHITE);
 		pnlDrawing.setBorder(null);
-		contentPane.add(pnlDrawing,BorderLayout.CENTER);
-		
+		contentPane.add(pnlDrawing, BorderLayout.CENTER);
+
 		JPanel pnlButton = new JPanel();
 		contentPane.add(pnlButton, BorderLayout.WEST);
-		
+
 		JButton btnPoint = new JButton("Point");
 		btnPoint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class DrawingFrm1 extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnLine = new JButton("Line");
 		btnLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +79,7 @@ public class DrawingFrm1 extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnRectangle = new JButton("Rectangle");
 		btnRectangle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,7 +89,7 @@ public class DrawingFrm1 extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnCircle = new JButton("Circle");
 		btnCircle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,7 +99,7 @@ public class DrawingFrm1 extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnDonut = new JButton("Donut");
 		btnDonut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -109,64 +109,64 @@ public class DrawingFrm1 extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnSelect = new JButton("Select");
 		btnSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(PnlDrawing.shapesArrList.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nothing to select!" , "Information" ,
-					JOptionPane.INFORMATION_MESSAGE);
-						return;
+				if (PnlDrawing.shapesArrList.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nothing to select!", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+					return;
 				} else {
 					PnlDrawing.obj = 6;
 				}
 			}
 		});
-		
+
 		JButton btnModify = new JButton("Modify");
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Shape shape : PnlDrawing.shapesArrList) {
-		            if (shape.isSelected()) {
-		                if (shape instanceof Circle) {
-		                    Circle circle = (Circle) shape;
-		                    circle.DialogEdit();
-		                    repaint();
-		                } else if (shape instanceof Rectangle) {
-		                    Rectangle rectangle = (Rectangle) shape;
-		                    rectangle.DialogEdit();
-		                    repaint();
-		                } else if (shape instanceof Point) {
-		                    Point point = (Point) shape;
-		                    point.DialogEdit();
-		                    repaint();
-		                } else if (shape instanceof Line) {
-		                    Line line = (Line) shape;
-		                    line.DialogEdit();
-		                    repaint();
-		                } else if (shape instanceof Donut) {
-		                    Donut donut = (Donut) shape;
-		                    donut.DialogEdit();
-		                    repaint();
-		                }
-		            }
-		        }
-		    }
+					if (shape.isSelected()) {
+						if (shape instanceof Circle) {
+							Circle circle = (Circle) shape;
+							circle.DialogEdit();
+							repaint();
+						} else if (shape instanceof Rectangle) {
+							Rectangle rectangle = (Rectangle) shape;
+							rectangle.DialogEdit();
+							repaint();
+						} else if (shape instanceof Point) {
+							Point point = (Point) shape;
+							point.DialogEdit();
+							repaint();
+						} else if (shape instanceof Line) {
+							Line line = (Line) shape;
+							line.DialogEdit();
+							repaint();
+						} else if (shape instanceof Donut) {
+							Donut donut = (Donut) shape;
+							donut.DialogEdit();
+							repaint();
+						}
+					}
+				}
+			}
 		});
-		
+
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(PnlDrawing.shapesArrList.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nothing to delete!" , 
-							"Error", JOptionPane.ERROR_MESSAGE);
+				if (PnlDrawing.shapesArrList.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nothing to delete!", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				for (Shape shape : PnlDrawing.shapesArrList) {
-					if(shape.isSelected()) {
-						int ans = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete selected object?", 
-								"Warning", JOptionPane.YES_NO_OPTION);
-						if(ans == 0) {
+					if (shape.isSelected()) {
+						int ans = JOptionPane.showConfirmDialog(null,
+								"Are you sure you want to delete selected object?", "Warning",
+								JOptionPane.YES_NO_OPTION);
+						if (ans == 0) {
 							PnlDrawing.shapesArrList.remove(shape);
 						}
 						return;
@@ -176,32 +176,30 @@ public class DrawingFrm1 extends JFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		
+
 		JButton btnOutline = new JButton("Outline color");
 		btnOutline.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				outline = JColorChooser.showDialog(null, "Choose color", Color.BLACK);
 				if (outline == null) {
-						outline = Color.BLACK;
+					outline = Color.BLACK;
 				}
 			}
 		});
-		
+
 		JButton btnArea = new JButton("Area color");
 		btnArea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				area = JColorChooser.showDialog(null, " Choose color", Color.WHITE);
-					if(area == null) {
-						area = Color.WHITE;
-					}
+				if (area == null) {
+					area = Color.WHITE;
+				}
 			}
 		});
 		GroupLayout gl_pnlButton = new GroupLayout(pnlButton);
-		gl_pnlButton.setHorizontalGroup(
-			gl_pnlButton.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlButton.createSequentialGroup()
-					.addGap(5)
-					.addGroup(gl_pnlButton.createParallelGroup(Alignment.LEADING, false)
+		gl_pnlButton.setHorizontalGroup(gl_pnlButton.createParallelGroup(Alignment.LEADING).addGroup(gl_pnlButton
+				.createSequentialGroup().addGap(5)
+				.addGroup(gl_pnlButton.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(btnArea, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 						.addComponent(btnOutline, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 						.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
@@ -212,33 +210,19 @@ public class DrawingFrm1 extends JFrame {
 						.addComponent(btnRectangle, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 						.addComponent(btnLine, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnPoint, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(20))
-		);
-		gl_pnlButton.setVerticalGroup(
-			gl_pnlButton.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlButton.createSequentialGroup()
-					.addGap(5)
-					.addComponent(btnPoint)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnLine)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnRectangle)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnCircle)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnDonut)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnSelect)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnModify)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnDelete)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnOutline)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnArea)
-					.addContainerGap(47, Short.MAX_VALUE))
-		);
+				.addGap(20)));
+		gl_pnlButton.setVerticalGroup(gl_pnlButton.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlButton.createSequentialGroup().addGap(5).addComponent(btnPoint)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnLine)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnRectangle)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnCircle)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnDonut)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnSelect)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnModify)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnDelete)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnOutline)
+						.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnArea)
+						.addContainerGap(47, Short.MAX_VALUE)));
 		pnlButton.setLayout(gl_pnlButton);
 	}
 }

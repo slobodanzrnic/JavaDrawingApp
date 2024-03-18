@@ -7,57 +7,59 @@ public class Line extends Shape {
 
 	private Point startPoint;
 	private Point endPoint;
-	
+
 	public Line() {
-		
+
 	}
-	
+
 	public Line(Point startPoint, Point endPoint) {
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
 	}
-	
+
 	public Line(Point startPoint, Point endPoint, boolean selected) {
 		this(startPoint, endPoint);
 		setSelected(selected);
 	}
-	
+
 	public double length() {
-		return this.startPoint.distance(endPoint.getX() , endPoint.getY());
+		return this.startPoint.distance(endPoint.getX(), endPoint.getY());
 	}
-	
+
 	public boolean equals(Object obj) {
-		if(obj instanceof Line) {
-			Line l = (Line)obj;
-			if(l.getStartPoint().equals(this.getStartPoint()) &&
-					l.getEndPoint().equals(this.getEndPoint()))
+		if (obj instanceof Line) {
+			Line l = (Line) obj;
+			if (l.getStartPoint().equals(this.getStartPoint()) && l.getEndPoint().equals(this.getEndPoint()))
 				return true;
 			else
 				return false;
-		}   else
-				return false;
+		} else
+			return false;
 	}
-	
+
 	public String toString() {
 		return "Line [start= " + startPoint + " , end= " + endPoint + " , selected= " + isSelected() + "]";
 	}
-	
+
 	public Point middleOfLine() {
-		int middleX = (this.getStartPoint().getX() + this.getEndPoint().getX())/2;
-		int middleY = (this.getStartPoint().getY() + this.getEndPoint().getY())/2;
+		int middleX = (this.getStartPoint().getX() + this.getEndPoint().getX()) / 2;
+		int middleY = (this.getStartPoint().getY() + this.getEndPoint().getY()) / 2;
 		Point middle = new Point(middleX, middleY);
 		return middle;
 	}
-	
+
 	public Point getStartPoint() {
 		return startPoint;
 	}
+
 	public void setStartPoint(Point startPoint) {
 		this.startPoint = startPoint;
 	}
+
 	public Point getEndPoint() {
-		return endPoint;	
+		return endPoint;
 	}
+
 	public void setEndPoint(Point endPoint) {
 		this.endPoint = endPoint;
 	}
@@ -71,11 +73,11 @@ public class Line extends Shape {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(getOutline());
-		g.drawLine(this.getStartPoint().getX(), this.getStartPoint().getY(), 
-				this.getEndPoint().getX(), this.getEndPoint().getY());
-		if(isSelected() == true) {
+		g.drawLine(this.getStartPoint().getX(), this.getStartPoint().getY(), this.getEndPoint().getX(),
+				this.getEndPoint().getY());
+		if (isSelected() == true) {
 			g.setColor(Color.black);
-			g.drawRect(this.getStartPoint().getX() - 3, this.getStartPoint().getY()-3 , 6, 6);
+			g.drawRect(this.getStartPoint().getX() - 3, this.getStartPoint().getY() - 3, 6, 6);
 			g.drawRect(this.getEndPoint().getX() - 3, this.getEndPoint().getY() - 3, 6, 6);
 			g.drawRect(this.middleOfLine().getX() - 3, this.middleOfLine().getY() - 3, 6, 6);
 		}
@@ -83,13 +85,13 @@ public class Line extends Shape {
 
 	@Override
 	public boolean contains(int x, int y) {
-		return (startPoint.distance(x , y) + endPoint.distance(x, y)) - length() < 0.1; 
+		return (startPoint.distance(x, y) + endPoint.distance(x, y)) - length() < 0.1;
 	}
 
 	@Override
 	public void move(int newX, int newY) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

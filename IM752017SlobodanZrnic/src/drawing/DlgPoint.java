@@ -64,63 +64,59 @@ public class DlgPoint extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
+				}
 			}
-		}});
+		});
 		xCoord.setColumns(10);
 		yCoord = new JTextField();
 		yCoord.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
+				}
 			}
-		}});
+		});
 		yCoord.setColumns(10);
 		JLabel lblNewLabel = new JLabel("X Coordinate:");
 		JLabel lblNewLabel_1 = new JLabel("Y Coordinate:");
-		
+
 		JButton btnOutline = new JButton("Outline color");
 		btnOutline.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				outline = JColorChooser.showDialog(null, "Choose color", Color.BLACK);
-					OutLineBoolean = true;
+				OutLineBoolean = true;
 			}
 		});
 		GroupLayout gl_pnlCenter = new GroupLayout(pnlCenter);
-		gl_pnlCenter.setHorizontalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addGap(68)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1))
-					.addGap(46)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnOutline, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		gl_pnlCenter.setHorizontalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING).addGroup(gl_pnlCenter
+				.createSequentialGroup().addGap(68)
+				.addGroup(gl_pnlCenter
+						.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel).addComponent(lblNewLabel_1))
+				.addGap(46)
+				.addGroup(gl_pnlCenter.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnOutline, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
 						.addComponent(xCoord, Alignment.LEADING)
 						.addComponent(yCoord, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
-					.addContainerGap(89, Short.MAX_VALUE))
-		);
-		gl_pnlCenter.setVerticalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addGap(39)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(xCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(yCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addGap(18)
-					.addComponent(btnOutline)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
+				.addContainerGap(89, Short.MAX_VALUE)));
+		gl_pnlCenter.setVerticalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCenter.createSequentialGroup().addGap(39)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(xCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel))
+						.addGap(18)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(yCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1))
+						.addGap(18).addComponent(btnOutline).addContainerGap(80, Short.MAX_VALUE)));
 		pnlCenter.setLayout(gl_pnlCenter);
 		{
 			JPanel pnlBtn = new JPanel();
@@ -130,19 +126,18 @@ public class DlgPoint extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(xCoord.getText().trim().isEmpty() ||
-							yCoord.getText().trim().isEmpty()) {
-								JOptionPane.showMessageDialog(null, "Enter in all values!",
-									"Error", JOptionPane.INFORMATION_MESSAGE);
+						if (xCoord.getText().trim().isEmpty() || yCoord.getText().trim().isEmpty()) {
+							JOptionPane.showMessageDialog(null, "Enter in all values!", "Error",
+									JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						} else {
 							for (Shape shape : PnlDrawing.shapesArrList) {
-								if(shape.isSelected()) {
+								if (shape.isSelected()) {
 									shape.move(Integer.parseInt((xCoord).getText()),
-												Integer.parseInt((yCoord).getText()));
-								if(OutLineBoolean == true) {
-									shape.setOutline(outline);
-									OutLineBoolean = false;
+											Integer.parseInt((yCoord).getText()));
+									if (OutLineBoolean == true) {
+										shape.setOutline(outline);
+										OutLineBoolean = false;
 									}
 								}
 							}

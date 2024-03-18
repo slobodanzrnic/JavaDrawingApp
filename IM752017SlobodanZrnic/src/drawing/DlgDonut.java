@@ -117,9 +117,9 @@ public class DlgDonut extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
@@ -129,9 +129,9 @@ public class DlgDonut extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
@@ -141,9 +141,9 @@ public class DlgDonut extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
@@ -153,9 +153,9 @@ public class DlgDonut extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				if (!(((c>='0') && (c<='9')) || (c == KeyEvent.VK_BACK_SPACE))){
+				if (!(((c >= '0') && (c <= '9')) || (c == KeyEvent.VK_BACK_SPACE))) {
 					e.consume();
-				getToolkit().beep();
+					getToolkit().beep();
 				}
 			}
 		});
@@ -164,71 +164,62 @@ public class DlgDonut extends JDialog {
 		JLabel lblNewLabel_1 = new JLabel("Y coordinate:");
 		JLabel lblNewLabel_2 = new JLabel("Outer Radius:");
 		JLabel lblNewLabel_3 = new JLabel("Inner Radius:");
-		
+
 		JButton btnNewButton = new JButton("Outline color");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				outline = JColorChooser.showDialog(null, "Choose color", Color.BLACK);
-					OutLineBoolean = true;
+				OutLineBoolean = true;
 			}
 		});
-		
+
 		JButton btnNewButton_1 = new JButton("Fill color");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fill = JColorChooser.showDialog(null, "Choose color", Color.BLACK);
-					FillBoolean = true;
+				FillBoolean = true;
 			}
 		});
 		GroupLayout gl_pnlCenter = new GroupLayout(pnlCenter);
-		gl_pnlCenter.setHorizontalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addGap(73)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_pnlCenter.createSequentialGroup()
-							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel)
-								.addComponent(lblNewLabel_1)
-								.addComponent(lblNewLabel_2)
-								.addComponent(lblNewLabel_3))
-							.addGap(39)
-							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING, false)
+		gl_pnlCenter.setHorizontalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING).addGroup(gl_pnlCenter
+				.createSequentialGroup().addGap(73)
+				.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING, false).addGroup(gl_pnlCenter
+						.createSequentialGroup()
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel)
+								.addComponent(lblNewLabel_1).addComponent(lblNewLabel_2).addComponent(lblNewLabel_3))
+						.addGap(39)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(xCoord, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-								.addComponent(yCoord)
-								.addComponent(rValue)
-								.addComponent(irValue)))
+								.addComponent(yCoord).addComponent(rValue).addComponent(irValue)))
 						.addGroup(gl_pnlCenter.createSequentialGroup()
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-					.addContainerGap(123, Short.MAX_VALUE))
-		);
-		gl_pnlCenter.setVerticalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addGap(38)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(xCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(yCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(rValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(irValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3))
-					.addGap(18)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(btnNewButton_1))
-					.addContainerGap(105, Short.MAX_VALUE))
-		);
+								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+								.addGap(18).addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+				.addContainerGap(123, Short.MAX_VALUE)));
+		gl_pnlCenter.setVerticalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCenter.createSequentialGroup().addGap(38)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(xCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel))
+						.addGap(18)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(yCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1))
+						.addGap(18)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(rValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_2))
+						.addGap(18)
+						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(irValue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_3))
+						.addGap(18).addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnNewButton).addComponent(btnNewButton_1))
+						.addContainerGap(105, Short.MAX_VALUE)));
 		pnlCenter.setLayout(gl_pnlCenter);
 		{
 			JPanel pnlBtn = new JPanel();
@@ -238,42 +229,41 @@ public class DlgDonut extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(xCoord.getText().trim().isEmpty() ||
-								yCoord.getText().trim().isEmpty() ||
-								rValue.getText().trim().isEmpty() || 
-								irValue.getText().trim().isEmpty()) {
-								isOk = false;
-									JOptionPane.showMessageDialog(null, "You need to fill in all blank spaces",
-										"Error",JOptionPane.ERROR_MESSAGE);
-									getToolkit().beep();
-							} else {
-								if(Integer.parseInt(rValue.getText()) > (Integer.parseInt(irValue.getText()))) {
-									for (Shape shape : PnlDrawing.shapesArrList) {
-										if (shape.isSelected()) {
-											shape.move(Integer.parseInt(xCoord.getText()),
-													Integer.parseInt(yCoord.getText()));
-											((Donut)shape).setRadius(Integer.parseInt(rValue.getText()));
-											((Donut)shape).setInnerRadius(Integer.parseInt(irValue.getText()));
-											if(isOutLineBoolean() == true) {
-												shape.setOutline(outline);
-												setOutLineBoolean(false);
-												}
-											if(isFillBoolean() == true) {
-												shape.setFill(fill);
-												setFillBoolean(false);
-											}
+						if (xCoord.getText().trim().isEmpty() || yCoord.getText().trim().isEmpty()
+								|| rValue.getText().trim().isEmpty() || irValue.getText().trim().isEmpty()) {
+							isOk = false;
+							JOptionPane.showMessageDialog(null, "You need to fill in all blank spaces", "Error",
+									JOptionPane.ERROR_MESSAGE);
+							getToolkit().beep();
+						} else {
+							if (Integer.parseInt(rValue.getText()) > (Integer.parseInt(irValue.getText()))) {
+								for (Shape shape : PnlDrawing.shapesArrList) {
+									if (shape.isSelected()) {
+										shape.move(Integer.parseInt(xCoord.getText()),
+												Integer.parseInt(yCoord.getText()));
+										((Donut) shape).setRadius(Integer.parseInt(rValue.getText()));
+										((Donut) shape).setInnerRadius(Integer.parseInt(irValue.getText()));
+										if (isOutLineBoolean() == true) {
+											shape.setOutline(outline);
+											setOutLineBoolean(false);
+										}
+										if (isFillBoolean() == true) {
+											shape.setFill(fill);
+											setFillBoolean(false);
 										}
 									}
-									isOk = true;
-										dispose();
-								} else {
+								}
+								isOk = true;
+								dispose();
+							} else {
 								isOk = false;
-									JOptionPane.showMessageDialog(null,  "Inner radius must be smaller than outer radius.",
-										"Error" , JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Inner radius must be smaller than outer radius.",
+										"Error", JOptionPane.ERROR_MESSAGE);
+							}
+
 						}
-						
 					}
-				}});
+				});
 				okButton.setActionCommand("OK");
 				pnlBtn.add(okButton);
 				getRootPane().setDefaultButton(okButton);

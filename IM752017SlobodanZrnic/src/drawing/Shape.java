@@ -4,12 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Shape implements Comparable, Moveable {
-	
+
 	protected boolean selected;
 	private Color outline = Color.black;
 	private Color fill = Color.white;
-	
-	
+
 	public Color getOutline() {
 		return outline;
 	}
@@ -27,18 +26,18 @@ public abstract class Shape implements Comparable, Moveable {
 	}
 
 	public Shape() {
-		
+
 	}
-	
+
 	public Shape(boolean selected) {
 		super();
 		this.selected = selected;
 	}
-	
+
 	public abstract void draw(Graphics g);
-	
+
 	public abstract boolean contains(int x, int y);
-	
+
 	public boolean isSelected() {
 		return selected;
 	}
@@ -48,7 +47,6 @@ public abstract class Shape implements Comparable, Moveable {
 	}
 
 	public abstract void DialogEdit();
-
 
 	public abstract void AreaPainter(Graphics g);
 }

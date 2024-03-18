@@ -9,18 +9,17 @@ import java.util.Collections;
 import javax.swing.JPanel;
 
 public class PnlDrawing extends JPanel implements MouseListener {
-	
+
 	static int obj = 0;
 	public int mx;
 	public int my;
 	static ArrayList<Shape> shapesArrList = new ArrayList<Shape>();
 	private Point startLine = null;
-	
-	
-	public PnlDrawing () {
+
+	public PnlDrawing() {
 		addMouseListener(this);
 	}
-	
+
 	public void paint(Graphics g) {
 		super.paint(g);
 		for (Shape shape : shapesArrList) {
@@ -29,13 +28,13 @@ public class PnlDrawing extends JPanel implements MouseListener {
 		}
 		repaint();
 	}
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		mx = e.getX();
 		my = e.getY();
-		
-		switch(obj) {
+
+		switch (obj) {
 		case 1:
 			Point p = new Point(mx, my, false);
 			p.setOutline(DrawingFrm1.outline);
@@ -47,7 +46,7 @@ public class PnlDrawing extends JPanel implements MouseListener {
 				startLine = new Point(mx, my, false);
 			} else {
 				Point endLine = new Point(mx, my);
-				Line line = new Line (startLine, endLine, false);
+				Line line = new Line(startLine, endLine, false);
 				line.setOutline(DrawingFrm1.outline);
 				shapesArrList.add(line);
 				startLine = null;
@@ -60,16 +59,14 @@ public class PnlDrawing extends JPanel implements MouseListener {
 			dlgRectangle.getyCoord().setText(String.valueOf(my));
 			dlgRectangle.getyCoord().setEditable(false);
 			dlgRectangle.setVisible(true);
-				if(dlgRectangle.isOk == true ) {
-					Rectangle r = new Rectangle (new Point(mx, my),
-							Integer.parseInt(dlgRectangle.getrWidth().getText()),
-							Integer.parseInt(dlgRectangle.getrHeight().getText()),
-							false);
-						r.setOutline(DrawingFrm1.outline);
-						r.setFill(DrawingFrm1.area);
-					System.out.println(r);
-					shapesArrList.add(r);
-				}
+			if (dlgRectangle.isOk == true) {
+				Rectangle r = new Rectangle(new Point(mx, my), Integer.parseInt(dlgRectangle.getrWidth().getText()),
+						Integer.parseInt(dlgRectangle.getrHeight().getText()), false);
+				r.setOutline(DrawingFrm1.outline);
+				r.setFill(DrawingFrm1.area);
+				System.out.println(r);
+				shapesArrList.add(r);
+			}
 			break;
 		case 4:
 			DlgCircle dlgCircle = new DlgCircle();
@@ -78,13 +75,12 @@ public class PnlDrawing extends JPanel implements MouseListener {
 			dlgCircle.getxCoord().setEditable(false);
 			dlgCircle.getyCoord().setEditable(false);
 			dlgCircle.setVisible(true);
-				if(dlgCircle.isOk == true) {
-					Circle c = new Circle(new Point(mx, my),
-							Integer.parseInt(dlgCircle.getrValue().getText()), false);
-						c.setOutline(DrawingFrm1.outline);
-						c.setFill(DrawingFrm1.area);
-					shapesArrList.add(c);
-				}
+			if (dlgCircle.isOk == true) {
+				Circle c = new Circle(new Point(mx, my), Integer.parseInt(dlgCircle.getrValue().getText()), false);
+				c.setOutline(DrawingFrm1.outline);
+				c.setFill(DrawingFrm1.area);
+				shapesArrList.add(c);
+			}
 			break;
 		case 5:
 			DlgDonut dlgDonut = new DlgDonut();
@@ -94,10 +90,10 @@ public class PnlDrawing extends JPanel implements MouseListener {
 			dlgDonut.getyCoord().setEditable(false);
 			dlgDonut.setVisible(true);
 			if (dlgDonut.isOk == true) {
-				Donut d = new Donut (new Point(mx, my), Integer.parseInt(dlgDonut.getrValue().getText()),
+				Donut d = new Donut(new Point(mx, my), Integer.parseInt(dlgDonut.getrValue().getText()),
 						Integer.parseInt(dlgDonut.getIrValue().getText()), false);
-					d.setOutline(DrawingFrm1.outline);
-					d.setFill(DrawingFrm1.area);
+				d.setOutline(DrawingFrm1.outline);
+				d.setFill(DrawingFrm1.area);
 				shapesArrList.add(d);
 			}
 			break;
@@ -106,8 +102,8 @@ public class PnlDrawing extends JPanel implements MouseListener {
 			Collections.reverse(shapesArrList);
 			for (Shape shape : shapesArrList) {
 				shape.setSelected(false);
-				if(match == false) {
-					if(shape.contains(mx, my)) {
+				if (match == false) {
+					if (shape.contains(mx, my)) {
 						shape.setSelected(true);
 						match = true;
 					}
@@ -120,24 +116,24 @@ public class PnlDrawing extends JPanel implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

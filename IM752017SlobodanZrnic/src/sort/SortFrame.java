@@ -58,57 +58,50 @@ public class SortFrame extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel pnlCenter = new JPanel();
 		contentPane.add(pnlCenter, BorderLayout.CENTER);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_pnlCenter = new GroupLayout(pnlCenter);
-		gl_pnlCenter.setHorizontalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_pnlCenter.setVerticalGroup(
-			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		
+		gl_pnlCenter.setHorizontalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCenter.createSequentialGroup().addContainerGap()
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE).addContainerGap()));
+		gl_pnlCenter.setVerticalGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCenter.createSequentialGroup().addContainerGap()
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE).addContainerGap()));
+
 		JList<String> list = new JList<String>();
 		scrollPane.setViewportView(list);
 		pnlCenter.setLayout(gl_pnlCenter);
 		list.setModel(dlm);
-		
+
 		JPanel pnlDown = new JPanel();
 		contentPane.add(pnlDown, BorderLayout.SOUTH);
-		
+
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SortDialog sortDialog = new SortDialog();
 				sortDialog.setVisible(true);
-				if(sortDialog.isOk == true) {
-					Circle c = new Circle (new Point (Integer.parseInt(sortDialog.getxCoord().getText()),
+				if (sortDialog.isOk == true) {
+					Circle c = new Circle(
+							new Point(Integer.parseInt(sortDialog.getxCoord().getText()),
 									(Integer.parseInt(sortDialog.getyCoord().getText()))),
-									Integer.parseInt(sortDialog.getrValue().getText()));
+							Integer.parseInt(sortDialog.getrValue().getText()));
 					arrayCircle.add(c);
 					Collections.sort(arrayCircle, Collections.reverseOrder());
-					dlm.add(arrayCircle.indexOf(c), "X: " + c.getCenter().getX() + " , Y: " + c.getCenter().getY() + " , Radius " + c.getRadius());
+					dlm.add(arrayCircle.indexOf(c), "X: " + c.getCenter().getX() + " , Y: " + c.getCenter().getY()
+							+ " , Radius " + c.getRadius());
 				}
 			}
 		});
-		
+
 		JButton btnRemove = new JButton("Remove");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (dlm.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nothing to remove" , "Error",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Nothing to remove", "Error", JOptionPane.ERROR_MESSAGE);
 					getToolkit().beep();
 				}
 				StackDialog stackDlgDelete = new StackDialog();
@@ -120,29 +113,18 @@ public class SortFrame extends JFrame {
 				stackDlgDelete.getyCoord().setEditable(false);
 				stackDlgDelete.getrValue().setEditable(false);
 				stackDlgDelete.setVisible(true);
-				if(stackDlgDelete.isDelete() == true) {
+				if (stackDlgDelete.isDelete() == true) {
 					arrayCircle.remove(0);
 					dlm.removeElementAt(0);
 				}
 			}
 		});
 		GroupLayout gl_pnlDown = new GroupLayout(pnlDown);
-		gl_pnlDown.setHorizontalGroup(
-			gl_pnlDown.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlDown.createSequentialGroup()
-					.addGap(162)
-					.addComponent(btnAdd)
-					.addGap(5)
-					.addComponent(btnRemove))
-		);
-		gl_pnlDown.setVerticalGroup(
-			gl_pnlDown.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlDown.createSequentialGroup()
-					.addGap(5)
-					.addGroup(gl_pnlDown.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnAdd)
-						.addComponent(btnRemove)))
-		);
+		gl_pnlDown.setHorizontalGroup(gl_pnlDown.createParallelGroup(Alignment.LEADING).addGroup(
+				gl_pnlDown.createSequentialGroup().addGap(162).addComponent(btnAdd).addGap(5).addComponent(btnRemove)));
+		gl_pnlDown.setVerticalGroup(gl_pnlDown.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlDown.createSequentialGroup().addGap(5).addGroup(gl_pnlDown
+						.createParallelGroup(Alignment.LEADING).addComponent(btnAdd).addComponent(btnRemove))));
 		pnlDown.setLayout(gl_pnlDown);
 	}
 }

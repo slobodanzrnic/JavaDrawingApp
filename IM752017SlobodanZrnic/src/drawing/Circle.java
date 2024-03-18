@@ -7,39 +7,42 @@ public class Circle extends Shape {
 
 	private Point center;
 	private int radius;
-	
-	public Circle () {
-		
+
+	public Circle() {
+
 	}
-	
+
 	public Circle(Point center, int radius) {
 		this.center = center;
 		this.radius = radius;
-		
+
 	}
-	
+
 	public Circle(Point center, int radius, boolean selected) {
 		this(center, radius);
 		setSelected(selected);
 	}
-	
+
 	public double area() {
 		return radius * radius * Math.PI;
 	}
-	
+
 	public String toString() {
 		return "Circle [center= " + center + " , radius= " + radius + " , selected= " + selected + "]";
 	}
-	
+
 	public int getRadius() {
 		return radius;
 	}
+
 	public void setRadius(int radius) {
 		this.radius = radius;
 	}
+
 	public Point getCenter() {
 		return center;
 	}
+
 	public void setCenter(Point center) {
 		this.center = center;
 	}
@@ -47,7 +50,7 @@ public class Circle extends Shape {
 	@Override
 	public int compareTo(Object o) {
 		if (o instanceof Circle) {
-			return (int)(this.area()-((Circle)o).area());
+			return (int) (this.area() - ((Circle) o).area());
 		}
 		return 0;
 	}
@@ -57,13 +60,13 @@ public class Circle extends Shape {
 		g.setColor(getOutline());
 		g.drawOval(this.getCenter().getX() - this.getRadius(), this.getCenter().getY() - this.getRadius(),
 				this.getRadius() * 2, this.getRadius() * 2);
-		if(isSelected() == true) {
+		if (isSelected() == true) {
 			g.setColor(Color.black);
 			g.drawRect(this.getCenter().getX() - 3, this.getCenter().getY() - 3, 6, 6);
 			g.drawRect(this.getCenter().getX() - 3, this.getCenter().getY() - this.getRadius() - 3, 6, 6);
-			g.drawRect(this.getCenter().getX() - 3, this.getCenter().getY() + this.getRadius() - 3 , 6, 6);
-			g.drawRect(this.getCenter().getX() - this.getRadius() - 3 , this.getCenter().getY() - 3 , 6, 6);
-			g.drawRect(this.getCenter().getX() + this.getRadius() -3 , this.getCenter().getY() - 3, 6 , 6);		
+			g.drawRect(this.getCenter().getX() - 3, this.getCenter().getY() + this.getRadius() - 3, 6, 6);
+			g.drawRect(this.getCenter().getX() - this.getRadius() - 3, this.getCenter().getY() - 3, 6, 6);
+			g.drawRect(this.getCenter().getX() + this.getRadius() - 3, this.getCenter().getY() - 3, 6, 6);
 		}
 	}
 
@@ -94,7 +97,7 @@ public class Circle extends Shape {
 	@Override
 	public void AreaPainter(Graphics g) {
 		g.setColor(getFill());
-			g.fillOval(this.getCenter().getX() - this.getRadius(), this.getCenter().getY() - this.getRadius(),
+		g.fillOval(this.getCenter().getX() - this.getRadius(), this.getCenter().getY() - this.getRadius(),
 				this.getRadius() * 2, this.getRadius() * 2);
 	}
 }
